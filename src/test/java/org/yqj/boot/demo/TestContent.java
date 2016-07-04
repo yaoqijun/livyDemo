@@ -7,7 +7,7 @@ package org.yqj.boot.demo;
  * Descirbe:
  */
 public class TestContent {
-    public static void main(String[] args) {
-        System.out.println("test");
-    }
+//    public static void main(String[] args) {
+//        System.out.println("test");
+//    }
 }

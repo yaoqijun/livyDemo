@@ -14,7 +14,7 @@ import java.io.PrintStream;
  * Email:yaoqj@terminus.io
  * Descirbe:
  */
-public class DemoBanner implements Banner{
+public class DemoBanner implements Banner {
 
     private static final String[] BANNER = {
             "",

@@ -1,5 +1,6 @@
 package org.yqj.livy.demo;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -12,7 +13,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class BootDemoApplication {
     public static void main(String[] args) {
-//        SpringApplication.run(BootDemoApplication.class, args);
+        SpringApplication.run(BootDemoApplication.class, args);
         new SpringApplicationBuilder()
                 .banner(new DemoBanner())
                 .sources(BootDemoApplication.class)
