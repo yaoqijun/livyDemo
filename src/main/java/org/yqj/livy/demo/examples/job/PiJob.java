@@ -1,4 +1,4 @@
-package org.yqj.livy.demo.examples;
+package org.yqj.livy.demo.examples.job;
 
 import com.cloudera.livy.Job;
 import com.cloudera.livy.JobContext;
@@ -20,7 +20,7 @@ public class PiJob implements Job<Double>,
         Function<Integer, Integer>,
         Function2<Integer, Integer, Integer> {
 
-    private final int samples = 2000000;
+    private final int samples = 20000000;
 
     public Integer call(Integer v1) throws Exception {
         double x = Math.random();
@@ -33,14 +33,18 @@ public class PiJob implements Job<Double>,
     }
 
     public Double call(JobContext jobContext) throws Exception {
+
         List<Integer> sampleList = new ArrayList<Integer>();
         for (int i = 0; i < samples; i++) {
             sampleList.add(i + 1);
         }
 
-        JavaSparkContext context = jobContext.sc();
-        SparkConf sparkConf = context.getConf().setAppName("livyTestSparkFuck");
+        JavaSparkContext javaSparkContext = jobContext.sc();
+        SparkConf sparkConf = javaSparkContext.getConf();
+        sparkConf.setAppName("test Cores fu");
+        sparkConf.set("spark.driver.cores", "1");
+        sparkConf.set("spark.executor.cores", "1");
         sparkConf.setMaster("spark://yaoqijuns-MacBook-Pro.local:7077");
-        return 4.0d * context.parallelize(sampleList).map(this).reduce(this) / samples;
+        return 4.0d * javaSparkContext.parallelize(sampleList).map(this).reduce(this) / samples;
     }
 }
